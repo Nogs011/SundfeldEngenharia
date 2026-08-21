@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Solicitar orçamento | Sundfeld Engenharia</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="container header-content">
+
+            <a href="/" class="logo">
+                <img src="/images/logo.png" alt="Sundfeld Engenharia">
+            </a>
+
+            <nav
+                class="navigation"
+                id="navigation"
+            >
+
+                <a href="/">Início</a>
+                <a href="/produtos">Produtos</a>
+                <a href="#sobre">Sobre nós</a>
+                <a href="#contato">Contato</a>
+
+            </nav>
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menu-toggle"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+            <a
+                href="https://wa.me/5512997045150"
+                target="_blank"
+                class="whatsapp-button"
+            >
+                Falar no WhatsApp
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="budget-page">
+
+            <div class="container">
+
+                <div class="budget-header">
+
+                    <h1>
+                        Solicite um orçamento
+                    </h1>
+
+                    <p>
+                        Preencha os dados abaixo e nossa equipe
+                        entrará em contato.
+                    </p>
+
+                </div>
+
+
+                <form id="budget-form">
+
+                    <div class="budget-product">
+
+                        <span>
+                            Produto
+                        </span>
+
+                        <strong id="budget-product">
+                            Carregando...
+                        </strong>
+
+                        <small id="budget-code">
+                            Código: -
+                        </small>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="nome">
+                            Nome *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="empresa">
+                            Empresa
+                        </label>
+
+                        <input
+                            type="text"
+                            id="empresa"
+                            name="empresa"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            E-mail *
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="telefone">
+                            Telefone / WhatsApp
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telefone"
+                            name="telefone"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="quantidade">
+                            Quantidade
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantidade"
+                            name="quantidade"
+                            min="1"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="mensagem">
+                            Mensagem
+                        </label>
+
+                        <textarea
+                            id="mensagem"
+                            name="mensagem"
+                            rows="5"
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Enviar solicitação
+                    </button>
+
+
+                    <p
+                        id="budget-message"
+                        class="budget-message"
+                    ></p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+
+        <div class="container footer-content">
+
+            <div class="footer-brand" id="sobre">
+
+                <h3>Sobre nós</h3>
+
+                <p>
+                    A Sundfeld Engenharia atua no fornecimento de
+                    componentes e equipamentos para automação industrial,
+                    oferecendo produtos para diferentes aplicações e
+                    necessidades do setor industrial.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>Navegação</h3>
+
+                <a href="/">Início</a>
+                <a href="/produtos">Produtos</a>
+
+            </div>
+
+
+            <div class="footer-contact" id="contato">
+
+                <h3>Contato</h3>
+
+                <a href="https://wa.me/5512997045150" target="_blank">
+                    (12) 99704-5150
+                </a>
+
+                <a
+                    href="https://webmail-seguro.com.br/?_task=mail&_action=compose&to=leonardo@sundfeldengenharia.com.br"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    leonardo@sundfeldengenharia.com.br
+                </a>
+
+                <span>
+                    São José dos Campos - SP
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                © 2026 Sundfeld Engenharia. Todos os direitos reservados.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="/js/script.js"></script>
+
+</body>
+
+</html>

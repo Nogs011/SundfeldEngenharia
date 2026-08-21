@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Administração - Sundfeld Engenharia</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div id="loading-overlay" class="loading-overlay">
+
+        <div class="loading-box">
+
+            <div class="loading-spinner"></div>
+
+            <p id="loading-message">
+                Carregando...
+            </p>
+
+        </div>
+
+    </div>
+
+    <header class="admin-header">
+
+    <div class="container admin-header-content">
+
+        <div>
+            <h1>
+                Sundfeld Engenharia
+            </h1>
+
+            <p>
+                Painel Administrativo
+            </p>
+        </div>
+
+        <button
+            type="button"
+            id="logout-button"
+            class="logout-button"
+        >
+            Sair
+        </button>
+
+    </div>
+
+</header>
+
+
+    <main>
+
+        <div class="container">
+
+
+            <!-- ========================= -->
+            <!-- CADASTRO / EDIÇÃO -->
+            <!-- ========================= -->
+
+            <section class="admin-panel">
+
+                <h2 id="form-title">
+                    Cadastrar Produto
+                </h2>
+
+                <p>
+                    Cadastre os produtos que ficarão disponíveis
+                    para solicitação de orçamento.
+                </p>
+
+
+                <form id="product-form">
+
+
+                    <!-- NOME -->
+
+                    <div class="form-group">
+
+                        <label for="titulo">
+                            Nome do produto
+                        </label>
+
+                        <input
+                            type="text"
+                            id="titulo"
+                            placeholder="Ex.: Contator Siemens 3RT1056"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- CÓDIGO -->
+
+                    <div class="form-group">
+
+                        <label for="codigo">
+                            Código do produto
+                        </label>
+
+                        <input
+                            type="text"
+                            id="codigo"
+                            placeholder="Ex.: 3RT1056-6AP36"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="marca">
+                            Marca
+                        </label>
+
+                        <input
+                            type="text"
+                            id="marca"
+                            placeholder="Ex.: Siemens"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DESCRIÇÃO -->
+
+                    <div class="form-group">
+
+                        <label for="descricao">
+                            Descrição
+                        </label>
+
+                        <textarea
+                            id="descricao"
+                            rows="5"
+                            placeholder="Digite uma descrição do produto..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- ========================= -->
+                    <!-- FOTOS EXISTENTES -->
+                    <!-- ========================= -->
+
+                    <div
+                        class="form-group"
+                        id="existing-images-container"
+                        style="display: none;"
+                    >
+
+                        <label>
+                            Fotos atuais
+                        </label>
+
+                        <div id="existing-images"></div>
+
+                        <small>
+                            Clique no × para remover uma foto.
+                        </small>
+
+                    </div>
+
+
+                    <!-- ========================= -->
+                    <!-- NOVAS FOTOS -->
+                    <!-- ========================= -->
+
+                    <div class="form-group">
+
+                        <label for="imagens">
+                            Fotos do produto
+                        </label>
+
+
+                        <div class="admin-upload-area">
+
+                            <div class="admin-upload-icon">
+                                +
+                            </div>
+
+                            <strong>
+                                Adicionar fotos
+                            </strong>
+
+                            <span>
+                                Clique aqui para selecionar imagens
+                            </span>
+
+                            <small>
+                                Máximo de 5 fotos por produto
+                            </small>
+
+                            <input
+                                type="file"
+                                id="imagens"
+                                name="imagens"
+                                accept="image/*"
+                                multiple
+                            >
+
+                        </div>
+
+
+                        <div
+                            id="new-images-preview"
+                            class="new-images-preview"
+                        ></div>
+
+
+                        <div
+                            id="images-counter"
+                            class="images-counter"
+                        >
+                            0 / 5 fotos selecionadas
+                        </div>
+
+                    </div>
+
+
+                    <!-- BOTÕES -->
+
+                    <div class="admin-form-actions">
+
+                        <button
+                            type="submit"
+                            class="admin-button"
+                            id="submit-button"
+                        >
+                            Cadastrar produto
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="admin-button cancel-button"
+                            id="cancel-button"
+                            style="display: none;"
+                        >
+                            Cancelar edição
+                        </button>
+
+                    </div>
+
+
+                    <p
+                        id="form-message"
+                        class="form-message"
+                    ></p>
+
+                </form>
+
+            </section>
+
+
+
+            <!-- ========================= -->
+            <!-- LISTA DE PRODUTOS -->
+            <!-- ========================= -->
+
+            <section class="admin-panel">
+
+                <h2>
+                    Produtos cadastrados
+                </h2>
+
+                <div class="admin-products-header">
+
+                    <div>
+                        <p>
+                            Gerencie os produtos disponíveis no catálogo.
+                        </p>
+
+                        <span
+                            id="admin-products-count"
+                            class="admin-products-count"
+                        >
+                            Carregando produtos...
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <!-- BUSCA -->
+
+                <div class="admin-search-box">
+
+                    <span class="admin-search-icon">
+                        ⌕
+                    </span>
+
+                    <input
+                        type="text"
+                        id="admin-product-search"
+                        placeholder="Buscar por nome, código, marca ou descrição..."
+                    >
+
+                    <button
+                        type="button"
+                        id="admin-search-button"
+                    >
+                        Buscar
+                    </button>
+
+                </div>
+
+
+                <!-- LISTA -->
+
+                <div id="admin-products-list">
+
+                    <p>
+                        Carregando produtos...
+                    </p>
+
+                </div>
+
+
+                <!-- PAGINAÇÃO -->
+
+                <div
+                    id="admin-pagination"
+                    class="admin-pagination"
+                ></div>
+
+            </section>
+        
+        </div>
+
+    </main>
+
+    <script src="/js/admin.js"></script>
+    
+</body>
+
+</html>

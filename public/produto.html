@@ -17,16 +17,25 @@
         <div class="container header-content">
 
             <a href="/" class="logo">
-                <span>SUNDFELD</span>
-                <small>ENGENHARIA</small>
+                <img src="/images/logo.png" alt="Sundfeld Engenharia">
             </a>
 
-            <nav class="navigation">
+            <nav class="navigation" id="navigation">
                 <a href="/">Início</a>
                 <a href="/produtos">Produtos</a>
-                <a href="/sobre">Sobre nós</a>
-                <a href="/contato">Contato</a>
+                <a href="#sobre">Sobre nós</a>
+                <a href="#contato">Contato</a>
             </nav>
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menu-toggle"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
 
             <a
                 href="https://wa.me/5512997045150"
@@ -64,71 +73,78 @@
 
     </main>
 
+        <!-- RODAPÉ -->
+        <footer class="footer">
 
-    <footer class="footer">
+            <div class="container footer-content">
 
-        <div class="container footer-content">
+                <div class="footer-brand" id="sobre">
 
-            <div class="footer-brand">
+                    <h3>Sobre nós</h3>
 
-                <strong>SUNDFELD</strong>
-                <span>ENGENHARIA</span>
+                    <p>
+                        A Sundfeld Engenharia atua no fornecimento de
+                        componentes e equipamentos para automação industrial,
+                        oferecendo produtos para diferentes aplicações e
+                        necessidades do setor industrial.
+                    </p>
 
-                <p>
-                    Componentes para automação industrial.
-                </p>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <h3>Navegação</h3>
-
-                <a href="/">Início</a>
-                <a href="/produtos">Produtos</a>
-                <a href="/sobre">Sobre nós</a>
-                <a href="/contato">Contato</a>
-
-            </div>
+                </div>
 
 
-            <div class="footer-contact">
+                <div class="footer-links">
 
-                <h3>Contato</h3>
+                    <h3>Navegação</h3>
 
-                <a
-                    href="https://wa.me/5512997045150"
-                    target="_blank"
-                >
-                    (12) 99704-5150
-                </a>
+                    <a href="/">Início</a>
 
-                <a href="mailto:leonardo@sundfeldengenharia.com.br">
-                    leonardo@sundfeldengenharia.com.br
-                </a>
+                    <a href="/produtos">
+                        Produtos
+                    </a>
 
-                <span>
-                    São José dos Campos - SP
-                </span>
-
-            </div>
-
-        </div>
+                </div>
 
 
-        <div class="footer-bottom">
+                <div class="footer-contact" id="contato">
 
-            <div class="container">
+                    <h3>Contato</h3>
 
-                © 2026 Sundfeld Engenharia.
-                Todos os direitos reservados.
+                    <a
+                        href="https://wa.me/5512997045150"
+                        target="_blank"
+                    >
+                        (12) 99704-5150
+                    </a>
+
+                    <a
+                        href="https://webmail-seguro.com.br/?_task=mail&_action=compose&to=leonardo@sundfeldengenharia.com.br"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        leonardo@sundfeldengenharia.com.br
+                    </a>
+
+                    <span>
+                        São José dos Campos - SP
+                    </span>
+
+                </div>
 
             </div>
 
-        </div>
 
-    </footer>
+            <div class="footer-bottom">
+
+                <div class="container">
+
+                    © 2026 Sundfeld Engenharia.
+                    Todos os direitos reservados.
+
+                </div>
+
+            </div>
+
+        </footer>
 
 
     <script src="/js/script.js"></script>

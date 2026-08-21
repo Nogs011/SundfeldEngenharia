@@ -22,10 +22,6 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: var(--black);
@@ -71,25 +67,13 @@ input {
 
 .logo {
     display: flex;
-    flex-direction: column;
-
-    line-height: 1;
+    align-items: center;
 }
 
-.logo span {
-    font-size: 24px;
-    font-weight: 900;
-    letter-spacing: 1px;
-}
-
-.logo small {
-    margin-top: 5px;
-
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3px;
-
-    color: var(--blue);
+.logo img {
+    width: 180px;
+    height: auto;
+    display: block;
 }
 
 .navigation {
@@ -131,6 +115,84 @@ input {
     transform: translateY(-2px);
 }
 
+
+/* =========================================================
+   MENU MOBILE
+========================================================= */
+
+.menu-toggle {
+    display: none;
+
+    border: none;
+    background: none;
+
+    font-size: 28px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    color: var(--gray-dark);
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE DO HEADER
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .header-content {
+        min-height: 70px;
+
+        gap: 15px;
+    }
+
+
+    .logo img {
+        width: 140px;
+    }
+
+
+    .navigation {
+        display: none;
+
+        position: absolute;
+
+        top: 70px;
+        left: 0;
+
+        width: 100%;
+
+        padding: 20px;
+
+        background-color: var(--white);
+
+        border-bottom: 1px solid var(--gray-light);
+
+        flex-direction: column;
+        align-items: center;
+
+        gap: 20px;
+
+        z-index: 1000;
+    }
+
+
+    .navigation.active {
+        display: flex;
+    }
+
+
+    .menu-toggle {
+        display: block;
+    }
+
+
+    .whatsapp-button {
+        display: none;
+    }
+
+}
 
 /* =========================================================
    HERO
@@ -417,6 +479,8 @@ input {
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1px;
+
+    overflow: hidden;
 }
 
 .product-info {
@@ -448,17 +512,6 @@ input {
     color: var(--gray);
 
     font-size: 12px;
-}
-
-.stock {
-    display: block;
-
-    margin-top: 15px;
-
-    color: #16803c;
-
-    font-size: 12px;
-    font-weight: 700;
 }
 
 
@@ -694,10 +747,6 @@ input {
         min-height: 70px;
     }
 
-    .navigation {
-        display: none;
-    }
-
     .whatsapp-button {
         padding: 10px 13px;
 
@@ -777,8 +826,11 @@ input {
         gap: 12px;
     }
 
-    .product-image {
-        height: 170px;
+    .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
     }
 
     .product-info {
@@ -916,30 +968,6 @@ input {
     font-size: 14px;
 }
 
-.product-stock-detail {
-    display: flex;
-    flex-direction: column;
-
-    gap: 5px;
-
-    margin-top: 30px;
-    padding: 20px;
-
-    background-color: var(--gray-bg);
-
-    border-left: 4px solid var(--blue);
-}
-
-.product-stock-detail strong {
-    font-size: 13px;
-}
-
-.product-stock-detail span {
-    color: #16803c;
-
-    font-size: 14px;
-    font-weight: 700;
-}
 
 .product-description {
     margin-top: 35px;
@@ -984,6 +1012,36 @@ input {
     transform: translateY(-2px);
 }
 
+.email-product-button {
+    display: inline-block;
+
+    margin-top: 12px;
+
+    padding: 15px 22px;
+
+    background-color: var(--gray-light);
+    color: var(--gray-dark);
+
+    border: 1px solid var(--gray-light);
+
+    border-radius: 5px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.email-product-button:hover {
+    background-color: var(--gray-dark);
+    color: var(--white);
+
+    transform: translateY(-2px);
+}
+
 
 @media (max-width: 700px) {
 
@@ -1005,4 +1063,1380 @@ input {
         font-size: 32px;
     }
 
+}
+
+.product-detail-gallery {
+    width: 100%;
+}
+
+.product-main-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+.product-main-image span {
+    color: #9ca3af;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+.product-thumbnails {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 15px;
+
+    overflow-x: auto;
+}
+
+
+.product-thumbnail {
+    width: 80px;
+    height: 80px;
+
+    padding: 0;
+
+    border: 2px solid transparent;
+
+    background: var(--gray-bg);
+
+    cursor: pointer;
+
+    overflow: hidden;
+}
+
+
+.product-thumbnail img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+.product-thumbnail.active {
+    border-color: #111827;
+}
+
+#existing-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.admin-image-item {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.admin-image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.remove-image-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    width: 28px;
+    height: 28px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #dc2626;
+    color: white;
+
+    font-size: 20px;
+    line-height: 28px;
+
+    cursor: pointer;
+}
+
+.remove-image-button:hover {
+    background: #b91c1c;
+}
+
+.admin-product-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.admin-product-image {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background: var(--gray-bg);
+    border-radius: 8px;
+}
+
+.admin-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.admin-product-image span {
+    color: #9ca3af;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.admin-product-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* =========================================================
+   PAINEL ADMINISTRATIVO
+========================================================= */
+
+.admin-panel {
+    margin-bottom: 35px;
+    padding: 35px;
+
+    background-color: var(--white);
+
+    border: 1px solid var(--gray-light);
+    border-radius: 12px;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.admin-panel h2 {
+    margin-bottom: 8px;
+
+    font-size: 26px;
+    line-height: 1.2;
+}
+
+.admin-panel > h2 + p {
+    margin-bottom: 25px;
+
+    color: var(--gray);
+
+    font-size: 14px;
+}
+
+
+/* CABEÇALHO DO ADMIN */
+
+body:has(.admin-panel) {
+    background-color: var(--gray-bg);
+}
+
+body:has(.admin-panel) header {
+    background-color: var(--black);
+    color: var(--white);
+
+    border-bottom: none;
+}
+
+body:has(.admin-panel) header .container {
+    padding: 28px 0;
+}
+
+body:has(.admin-panel) header h1 {
+    font-size: 26px;
+    font-weight: 800;
+}
+
+body:has(.admin-panel) header p {
+    margin-top: 4px;
+
+    color: #9ca3af;
+
+    font-size: 13px;
+}
+
+
+/* FORMULÁRIO */
+
+#product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: var(--black);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid var(--gray-light);
+    border-radius: 7px;
+
+    outline: none;
+
+    background-color: #fafbfc;
+    color: var(--black);
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    background-color: var(--white);
+
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(0, 102, 255, 0.1);
+}
+
+.form-group textarea {
+    min-height: 130px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+
+/* UPLOAD DE FOTOS */
+
+.form-group input[type="file"] {
+    padding: 20px;
+
+    border: 2px dashed #cbd5e1;
+
+    background-color: #f8fafc;
+
+    cursor: pointer;
+}
+
+.form-group input[type="file"]:hover {
+    border-color: var(--blue);
+
+    background-color: #f5f9ff;
+}
+
+.form-group small {
+    color: var(--gray);
+
+    font-size: 12px;
+}
+
+
+/* BOTÕES DO ADMIN */
+
+.admin-button {
+    min-height: 44px;
+
+    padding: 0 20px;
+
+    border: none;
+    border-radius: 7px;
+
+    background-color: var(--blue);
+    color: var(--white);
+
+    cursor: pointer;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.admin-button:hover {
+    background-color: var(--blue-dark);
+
+    transform: translateY(-1px);
+}
+
+.cancel-button {
+    margin-left: 8px;
+
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+.cancel-button:hover {
+    background-color: #d1d5db;
+}
+
+
+/* MENSAGENS */
+
+.form-message {
+    min-height: 20px;
+
+    margin-top: 5px;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-message.success {
+    color: #16803c;
+}
+
+.form-message.error {
+    color: #dc2626;
+}
+
+
+/* LISTA DE PRODUTOS */
+
+#admin-products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.admin-product {
+    margin: 0;
+
+    padding: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border: 1px solid var(--gray-light);
+    border-radius: 10px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.admin-product:hover {
+    border-color: #cbd5e1;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.admin-product h3 {
+    margin-bottom: 5px;
+
+    font-size: 16px;
+}
+
+.admin-product p {
+    margin-top: 4px;
+
+    color: var(--gray);
+
+    font-size: 13px;
+}
+
+.admin-product-actions {
+    flex-shrink: 0;
+}
+
+.edit-button,
+.delete-button {
+    min-height: 38px;
+
+    padding: 0 15px;
+
+    border: none;
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.edit-button {
+    background-color: #e8f1ff;
+    color: var(--blue);
+}
+
+.edit-button:hover {
+    background-color: #d8e7ff;
+}
+
+.delete-button {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.delete-button:hover {
+    background-color: #fecaca;
+}
+
+
+/* FOTOS EXISTENTES */
+
+#existing-images {
+    margin-top: 12px;
+}
+
+.admin-image-item {
+    width: 110px;
+    height: 110px;
+
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+
+    background-color: var(--gray-bg);
+}
+
+.remove-image-button {
+    width: 25px;
+    height: 25px;
+
+    font-size: 16px;
+    line-height: 25px;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 700px) {
+
+    .admin-panel {
+        padding: 22px;
+
+        border-radius: 9px;
+    }
+
+    .admin-panel h2 {
+        font-size: 22px;
+    }
+
+    .admin-product {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .admin-product-info {
+        width: 100%;
+
+        align-items: flex-start;
+    }
+
+    .admin-product-actions {
+        width: 100%;
+    }
+
+    .edit-button,
+    .delete-button {
+        flex: 1;
+    }
+
+    .cancel-button {
+        margin-top: 8px;
+        margin-left: 0;
+    }
+
+}
+
+/* =========================================================
+   UPLOAD DE FOTOS - ADMIN
+========================================================= */
+
+.admin-upload-area {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 170px;
+
+    padding: 30px;
+
+    border: 2px dashed #cbd5e1;
+    border-radius: 10px;
+
+    background-color: #f8fafc;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.admin-upload-area:hover {
+    border-color: var(--blue);
+    background-color: #f5f9ff;
+}
+
+.admin-upload-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 10px;
+
+    border-radius: 50%;
+
+    background-color: #e8f1ff;
+    color: var(--blue);
+
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.admin-upload-area strong {
+    font-size: 14px;
+}
+
+.admin-upload-area span {
+    margin-top: 5px;
+
+    color: var(--gray);
+
+    font-size: 12px;
+}
+
+.admin-upload-area small {
+    margin-top: 8px;
+
+    color: #9ca3af;
+
+    font-size: 11px;
+}
+
+.admin-upload-area input[type="file"] {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+
+/* PREVIEW */
+
+.new-images-preview {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 15px;
+}
+
+.new-images-preview:empty {
+    display: none;
+}
+
+.new-images-preview .admin-image-item {
+    width: 110px;
+    height: 110px;
+}
+
+
+/* CONTADOR */
+
+.images-counter {
+    margin-top: 10px;
+
+    color: var(--gray);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* BOTÕES DO FORMULÁRIO */
+
+.admin-form-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 5px;
+}
+
+
+@media (max-width: 700px) {
+
+    .admin-upload-area {
+        min-height: 150px;
+
+        padding: 20px;
+    }
+
+    .admin-form-actions {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+    .admin-form-actions .admin-button {
+        width: 100%;
+    }
+
+    .admin-form-actions .cancel-button {
+        margin: 0;
+    }
+
+}
+
+/* =========================================================
+   LOGIN ADMINISTRATIVO
+========================================================= */
+
+.login-card {
+    padding: 45px;
+
+    background-color: var(--white);
+
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.25);
+}
+
+
+.login-header {
+    margin-bottom: 35px;
+}
+
+
+.login-label {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--blue);
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+.login-header h1 {
+    color: var(--black);
+
+    font-size: 30px;
+    line-height: 1.15;
+}
+
+
+.login-header p {
+    margin-top: 10px;
+
+    color: var(--gray);
+
+    font-size: 14px;
+}
+
+
+.login-page .form-group {
+    margin-bottom: 20px;
+}
+
+
+.login-page .form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--gray-dark);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.login-page .form-group input {
+    width: 100%;
+
+    height: 50px;
+
+    padding: 0 15px;
+
+    border: 1px solid var(--gray-light);
+    border-radius: 6px;
+
+    outline: none;
+
+    color: var(--black);
+
+    background-color: var(--white);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.login-page .form-group input:focus {
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(0, 102, 255, 0.10);
+}
+
+
+.login-button {
+    width: 100%;
+
+    height: 52px;
+
+    margin-top: 10px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: var(--blue);
+    color: var(--white);
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.login-button:hover:not(:disabled) {
+    background-color: var(--blue-dark);
+
+    transform: translateY(-1px);
+}
+
+
+.login-button:disabled {
+    opacity: 0.7;
+
+    cursor: not-allowed;
+}
+
+
+.login-message {
+    min-height: 20px;
+
+    margin-top: 15px;
+
+    text-align: center;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.login-message.success {
+    color: #16803c;
+}
+
+
+.login-message.error {
+    color: #dc2626;
+}
+
+
+.login-back {
+    display: block;
+
+    margin-top: 25px;
+
+    text-align: center;
+
+    color: var(--gray);
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: color 0.2s ease;
+}
+
+
+.login-back:hover {
+    color: var(--blue);
+}
+
+
+@media (max-width: 500px) {
+
+    .login-page {
+        padding: 20px;
+    }
+
+    .login-card {
+        padding: 30px 25px;
+    }
+
+    .login-header h1 {
+        font-size: 26px;
+    }
+
+}
+/* =========================================================
+   CENTRALIZAR LOGIN
+========================================================= */
+
+.login-page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0b0d10,
+            #151a21
+        );
+}
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* =========================================================
+   BOTÃO SAIR - PAINEL ADMINISTRATIVO
+========================================================= */
+
+.admin-header {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.admin-header-content {
+    min-height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.admin-header h1 {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.admin-header p {
+    margin-top: 3px;
+
+    color: var(--gray);
+
+    font-size: 13px;
+}
+
+.logout-button {
+    padding: 10px 18px;
+
+    border: 1px solid #dc2626;
+    border-radius: 6px;
+
+    background-color: transparent;
+    color: #dc2626;
+
+    cursor: pointer;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.logout-button:hover {
+    background-color: #dc2626;
+    color: var(--white);
+}
+
+.admin-login-button {
+    padding: 10px 16px;
+
+    border: 1px solid var(--blue);
+    border-radius: 5px;
+
+    color: var(--blue);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.admin-login-button:hover {
+    background-color: var(--blue);
+    color: var(--white);
+
+    transform: translateY(-2px);
+}
+
+/* ===============================
+   IMAGENS DOS PRODUTOS EM DESTAQUE
+   =============================== */
+
+#featured-products-grid .product-image {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#featured-products-grid .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* ===============================
+   ZOOM DA IMAGEM DO PRODUTO
+   =============================== */
+
+.product-main-image {
+    width: 100%;
+    height: 450px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--gray-bg);
+
+    overflow: hidden;
+    cursor: zoom-in;
+}
+
+.product-main-image img {
+    transition: transform 0.15s ease;
+    transform-origin: center center;
+}
+
+.product-main-image.zoom-active img {
+    transform: scale(2);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.footer h3 {
+    font-size: 18px;
+    margin-bottom: 18px;
+}
+
+.footer p,
+.footer a,
+.footer span {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.footer-links a,
+.footer-contact a {
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* =========================================================
+   BUSCA + QUANTIDADE + PAGINAÇÃO + LOADING - ADMIN
+========================================================= */
+
+/* =========================
+   BUSCA DE PRODUTOS
+========================= */
+
+.admin-search-box {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    max-width: 850px;
+
+    min-height: 58px;
+
+    margin: 25px 0 30px;
+    padding: 6px;
+
+    background-color: #f8fafc;
+
+    border: 1px solid var(--gray-light);
+    border-radius: 10px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.admin-search-box:focus-within {
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(0, 102, 255, 0.08),
+        0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.admin-search-icon {
+    width: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--gray);
+
+    font-size: 25px;
+}
+
+.admin-search-box input {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 46px;
+
+    padding: 0 10px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: var(--black);
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.admin-search-box input::placeholder {
+    color: #9ca3af;
+}
+
+.admin-search-box button {
+    height: 46px;
+
+    padding: 0 25px;
+
+    border: none;
+    border-radius: 7px;
+
+    background-color: var(--blue);
+    color: var(--white);
+
+    cursor: pointer;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.admin-search-box button:hover {
+    background-color: var(--blue-dark);
+
+    transform: translateY(-1px);
+}
+
+.admin-search-box button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   QUANTIDADE DE PRODUTOS
+========================= */
+
+.admin-products-count {
+    margin-top: 5px;
+    margin-bottom: 20px;
+
+    color: var(--gray);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   PAGINAÇÃO
+========================= */
+
+.admin-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    margin-top: 30px;
+    padding-top: 25px;
+
+    border-top: 1px solid var(--gray-light);
+}
+
+.pagination-button {
+    min-width: 38px;
+    height: 38px;
+
+    padding: 0 12px;
+
+    border: 1px solid var(--gray-light);
+    border-radius: 7px;
+
+    background-color: var(--white);
+    color: var(--gray-dark);
+
+    cursor: pointer;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+    border-color: var(--blue);
+
+    color: var(--blue);
+
+    background-color: #f5f9ff;
+
+    transform: translateY(-1px);
+}
+
+.pagination-button.active {
+    border-color: var(--blue);
+
+    background-color: var(--blue);
+
+    color: var(--white);
+}
+
+.pagination-button:disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================
+   TELA DE CARREGAMENTO
+========================= */
+
+.loading-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(11, 13, 16, 0.65);
+
+    backdrop-filter: blur(3px);
+}
+
+.loading-overlay.active {
+    display: flex;
+}
+
+.loading-box {
+    width: min(90%, 320px);
+
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: var(--white);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25);
+
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 18px;
+
+    border: 4px solid var(--gray-light);
+    border-top-color: var(--blue);
+
+    border-radius: 50%;
+
+    animation: loading-spin 0.8s linear infinite;
+}
+
+.loading-box p {
+    color: var(--black);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+@keyframes loading-spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 600px) {
+
+    .admin-search-box {
+        min-height: auto;
+        flex-direction: column;
+        align-items: stretch;
+        flex-wrap: wrap;
+        padding: 6px;
+    }
+
+    .admin-search-icon {
+        width: 40px;
+    }
+
+    .admin-search-box input,
+    .admin-search-box button {
+        width: 100%;
+    }
+
+    .admin-search-box input {
+        height: 46px;
+    }
+
+    .admin-search-box button {
+        height: 46px;
+        margin-top: 6px;
+    }
+
+    .admin-pagination {
+        flex-wrap: wrap;
+    }
+
+    .pagination-button {
+        min-width: 36px;
+        padding: 0 10px;
+    }
+}
+
+/* =========================================================
+   AJUSTE DA IMAGEM INDUSTRIAL DO HERO
+========================================================= */
+
+.hero-image {
+    height: 520px;
+    overflow: hidden;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
