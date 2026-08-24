@@ -2440,3 +2440,13 @@ html {
     object-fit: cover;
     display: block;
 }
+
+/* =========================================================
+   IMAGENS DOS PRODUTOS - CATÁLOGO
+========================================================= */
+
+.products-grid .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
