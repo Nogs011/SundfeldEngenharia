@@ -7,6 +7,8 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const Administrador = require("./models/Administrador");
 const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
+const resend = new Resend(process.env.RESEND_API_KEY);
 const multer = require("multer");
 const { v2: cloudinary } = require("cloudinary");
 const rateLimit = require("express-rate-limit");
@@ -776,19 +778,12 @@ app.post("/api/orcamento", orcamentoLimiter, async (req, res) => {
         }
 
 
-        await transporter.sendMail({
-
-            from: `"Site Sundfeld Engenharia" <${process.env.SMTP_USER}>`,
-
-            to: "leonardo@sundfeldengenharia.com.br",
-
+        await resend.emails.send({
+            from: "Site Sundfeld Engenharia <orcamentos@sundfeldengenharia.com.br>",
+            to: ["leonardo@sundfeldengenharia.com.br"],
             replyTo: email,
-
-            subject:
-                `Solicitação de orçamento - ${produto}`,
-
+            subject: `Solicitação de orçamento - ${produto}`,
             html: `
-
                 <h2>Nova solicitação de orçamento</h2>
 
                 <p>
@@ -832,9 +827,7 @@ app.post("/api/orcamento", orcamentoLimiter, async (req, res) => {
                     <strong>Mensagem:</strong>
                     ${mensagem || "Nenhuma mensagem informada."}
                 </p>
-
             `
-
         });
 
 
