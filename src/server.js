@@ -13,6 +13,7 @@ const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
 
 const app = express();
+app.set('trust proxy', 1);
 
 app.use(
     helmet({
