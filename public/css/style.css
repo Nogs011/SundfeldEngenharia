@@ -2450,3 +2450,280 @@ html {
     height: 100%;
     object-fit: contain;
 }
+
+/* =========================================================
+   PÁGINA DE ORÇAMENTO — CARD CENTRALIZADO
+========================================================= */
+
+.budget-page {
+    padding: 80px 0 100px;
+    background-color: var(--gray-bg);
+}
+
+.budget-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.budget-header h1 {
+    font-size: 48px;
+    line-height: 1.1;
+}
+
+.budget-header p {
+    margin-top: 10px;
+    color: var(--gray);
+}
+
+
+/* CARD DO FORMULÁRIO */
+
+#budget-form {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 0 auto;
+    padding: 40px;
+
+    background-color: var(--white);
+
+    border: 1px solid var(--gray-light);
+    border-radius: 14px;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.07);
+}
+
+
+/* PRODUTO */
+
+.budget-product {
+    margin-bottom: 30px;
+    padding: 20px;
+
+    background-color: #f8fafc;
+
+    border: 1px solid var(--gray-light);
+    border-left: 4px solid var(--blue);
+
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.budget-product span {
+    color: var(--blue);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.budget-product strong {
+    color: var(--black);
+
+    font-size: 18px;
+}
+
+.budget-product small {
+    color: var(--gray);
+
+    font-size: 13px;
+}
+
+
+/* CAMPOS */
+
+#budget-form .form-group {
+    margin-bottom: 20px;
+}
+
+#budget-form .form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--gray-dark);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#budget-form .form-group input,
+#budget-form .form-group textarea {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid var(--gray-light);
+    border-radius: 7px;
+
+    outline: none;
+
+    background-color: #fafbfc;
+    color: var(--black);
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+#budget-form .form-group input {
+    height: 50px;
+}
+
+#budget-form .form-group textarea {
+    min-height: 130px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+#budget-form .form-group input:focus,
+#budget-form .form-group textarea:focus {
+    background-color: var(--white);
+
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(0, 102, 255, 0.1);
+}
+
+
+/* BOTÃO */
+
+#budget-form .primary-button {
+    width: 100%;
+
+    min-height: 52px;
+
+    border: none;
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+
+/* MENSAGEM */
+
+.budget-message {
+    min-height: 20px;
+
+    margin-top: 15px;
+
+    text-align: center;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.budget-message.success {
+    color: #16803c;
+}
+
+.budget-message.error {
+    color: #dc2626;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .budget-page {
+        padding: 55px 0 70px;
+    }
+
+    .budget-header {
+        margin-bottom: 25px;
+    }
+
+    .budget-header h1 {
+        font-size: 34px;
+    }
+
+    #budget-form {
+        padding: 25px 20px;
+        border-radius: 10px;
+    }
+
+    .budget-product {
+        padding: 18px;
+    }
+
+}
+
+/* =========================================================
+   MENSAGEM DE SUCESSO - ORÇAMENTO
+========================================================= */
+
+.budget-success-box {
+    padding: 35px 30px;
+
+    max-width: 380px;
+}
+
+.budget-success-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background-color: #e8f7ee;
+    color: #16803c;
+
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.budget-success-box h2 {
+    color: var(--black);
+
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+.budget-success-box p {
+    margin-top: 8px;
+
+    color: var(--gray);
+
+    font-size: 14px;
+}
+
+/* =========================================================
+   OVERLAY DE SUCESSO
+========================================================= */
+
+#budget-success-overlay {
+    display: none;
+}
+
+#budget-success-overlay.active {
+    display: flex;
+}
+
+#close-success-overlay {
+    width: 100%;
+    margin-top: 25px;
+    min-height: 45px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}

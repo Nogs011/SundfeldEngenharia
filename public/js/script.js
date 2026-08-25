@@ -947,9 +947,12 @@ if (budgetForm) {
                 }
 
 
-                message.textContent =
-                    "Solicitação enviada com sucesso! Nossa equipe entrará em contato.";
+                const successOverlay =
+                    document.getElementById("budget-success-overlay");
 
+                if (successOverlay) {
+                    successOverlay.classList.add("active");
+                }
 
                 budgetForm.reset();
 
@@ -1072,3 +1075,27 @@ document.querySelectorAll('a[href="/#sobre"], a[href="/#contato"]').forEach(link
     });
 
 });
+
+// ===============================
+// FECHAR MENSAGEM DE SUCESSO
+// ===============================
+
+const successOverlay =
+    document.getElementById("budget-success-overlay");
+
+const closeSuccessOverlay =
+    document.getElementById("close-success-overlay");
+
+
+if (successOverlay && closeSuccessOverlay) {
+
+    closeSuccessOverlay.addEventListener(
+        "click",
+        () => {
+
+            successOverlay.classList.remove("active");
+
+        }
+    );
+
+}
