@@ -738,12 +738,18 @@ function renderNewImages() {
                     "admin-image-item"
                 );
 
+                imageContainer.draggable = true;
+
+                imageContainer.dataset.index =
+                    index;
+
 
                 imageContainer.innerHTML = `
 
                     <img
                         src="${event.target.result}"
                         alt="Nova imagem ${index + 1}"
+                        draggable="false"
                     >
 
                     <button
@@ -757,6 +763,10 @@ function renderNewImages() {
                 `;
 
 
+                // =========================
+                // REMOVER FOTO
+                // =========================
+
                 const removeButton =
                     imageContainer.querySelector(
                         ".remove-image-button"
@@ -765,12 +775,149 @@ function renderNewImages() {
 
                 removeButton.addEventListener(
                     "click",
-                    () => {
+                    event => {
+
+                        event.stopPropagation();
+
 
                         newImages.splice(
                             index,
                             1
                         );
+
+
+                        renderNewImages();
+
+                    }
+                );
+
+
+                // =========================
+                // ARRASTAR FOTO
+                // =========================
+
+                imageContainer.addEventListener(
+                    "dragstart",
+                    () => {
+
+                        imageContainer.classList.add(
+                            "dragging"
+                        );
+
+                        imageContainer.dataset.dragIndex =
+                            index;
+
+                    }
+                );
+
+
+                imageContainer.addEventListener(
+                    "dragend",
+                    () => {
+
+                        imageContainer.classList.remove(
+                            "dragging"
+                        );
+
+                        document
+                            .querySelectorAll(
+                                "#new-images-preview .admin-image-item"
+                            )
+                            .forEach(item => {
+
+                                item.classList.remove(
+                                    "drag-over"
+                                );
+
+                            });
+
+                    }
+                );
+
+
+                imageContainer.addEventListener(
+                    "dragover",
+                    event => {
+
+                        event.preventDefault();
+
+                        imageContainer.classList.add(
+                            "drag-over"
+                        );
+
+                    }
+                );
+
+
+                imageContainer.addEventListener(
+                    "dragleave",
+                    () => {
+
+                        imageContainer.classList.remove(
+                            "drag-over"
+                        );
+
+                    }
+                );
+
+
+                imageContainer.addEventListener(
+                    "drop",
+                    event => {
+
+                        event.preventDefault();
+
+
+                        imageContainer.classList.remove(
+                            "drag-over"
+                        );
+
+
+                        const dragging =
+                            document.querySelector(
+                                "#new-images-preview .dragging"
+                            );
+
+
+                        if (!dragging) {
+                            return;
+                        }
+
+
+                        const fromIndex =
+                            Number(
+                                dragging.dataset.index
+                            );
+
+
+                        const toIndex =
+                            Number(
+                                imageContainer.dataset.index
+                            );
+
+
+                        if (
+                            Number.isNaN(fromIndex) ||
+                            Number.isNaN(toIndex) ||
+                            fromIndex === toIndex
+                        ) {
+                            return;
+                        }
+
+
+                        const movedImage =
+                            newImages.splice(
+                                fromIndex,
+                                1
+                            )[0];
+
+
+                        newImages.splice(
+                            toIndex,
+                            0,
+                            movedImage
+                        );
+
 
                         renderNewImages();
 
@@ -851,12 +998,17 @@ function displayExistingImages(images) {
                 "admin-image-item"
             );
 
+            imageContainer.draggable = true;
+
+            imageContainer.dataset.index = index;
+
 
             imageContainer.innerHTML = `
 
                 <img
                     src="${image}"
                     alt="Imagem ${index + 1}"
+                    draggable="false"
                 >
 
                 <button
@@ -870,6 +1022,10 @@ function displayExistingImages(images) {
             `;
 
 
+            // =========================
+            // REMOVER FOTO
+            // =========================
+
             const removeButton =
                 imageContainer.querySelector(
                     ".remove-image-button"
@@ -878,29 +1034,146 @@ function displayExistingImages(images) {
 
             removeButton.addEventListener(
                 "click",
+                (event) => {
+
+                    event.stopPropagation();
+
+
+                    existingImages.splice(
+                        index,
+                        1
+                    );
+
+
+                    displayExistingImages(
+                        existingImages
+                    );
+
+                }
+            );
+
+
+            // =========================
+            // ARRASTAR FOTO
+            // =========================
+
+            imageContainer.addEventListener(
+                "dragstart",
                 () => {
 
-                    existingImages =
-                        existingImages.filter(
-                            currentImage =>
-                                currentImage !== image
+                    imageContainer.classList.add(
+                        "dragging"
+                    );
+
+                    imageContainer.dataset.dragIndex =
+                        index;
+
+                }
+            );
+
+
+            imageContainer.addEventListener(
+                "dragend",
+                () => {
+
+                    imageContainer.classList.remove(
+                        "dragging"
+                    );
+
+                    document
+                        .querySelectorAll(
+                            "#existing-images .admin-image-item"
+                        )
+                        .forEach(item => {
+
+                            item.classList.remove(
+                                "drag-over"
+                            );
+
+                        });
+
+                }
+            );
+
+
+            imageContainer.addEventListener(
+                "dragover",
+                event => {
+
+                    event.preventDefault();
+
+                    imageContainer.classList.add(
+                        "drag-over"
+                    );
+
+                }
+            );
+
+
+            imageContainer.addEventListener(
+                "dragleave",
+                () => {
+
+                    imageContainer.classList.remove(
+                        "drag-over"
+                    );
+
+                }
+            );
+
+
+            imageContainer.addEventListener(
+                "drop",
+                event => {
+
+                    event.preventDefault();
+
+
+                    imageContainer.classList.remove(
+                        "drag-over"
+                    );
+
+
+                    const fromIndex =
+                        Number(
+                            document.querySelector(
+                                "#existing-images .dragging"
+                            )?.dataset.index
                         );
 
 
-                    imageContainer.remove();
+                    const toIndex =
+                        Number(
+                            imageContainer.dataset.index
+                        );
 
 
                     if (
-                        existingImages.length === 0
+                        Number.isNaN(fromIndex) ||
+                        Number.isNaN(toIndex) ||
+                        fromIndex === toIndex
                     ) {
-
-                        existingImagesContainer.style.display =
-                            "none";
-
+                        return;
                     }
 
 
-                    updateImagesCounter();
+                    const movedImage =
+                        existingImages.splice(
+                            fromIndex,
+                            1
+                        )[0];
+
+
+                    existingImages.splice(
+                        toIndex,
+                        0,
+                        movedImage
+                    );
+
+
+                    displayExistingImages(
+                        existingImages
+                    );
 
                 }
             );

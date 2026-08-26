@@ -1137,6 +1137,27 @@ input {
     margin-top: 10px;
 }
 
+#existing-images .admin-image-item,
+.new-images-preview .admin-image-item {
+    cursor: grab;
+    user-select: none;
+}
+
+#existing-images .admin-image-item:active,
+.new-images-preview .admin-image-item:active {
+    cursor: grabbing;
+}
+
+.admin-image-item.dragging {
+    opacity: 0.45;
+    transform: scale(0.97);
+}
+
+.admin-image-item.drag-over {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.12);
+}
+
 .admin-image-item {
     position: relative;
     width: 120px;
